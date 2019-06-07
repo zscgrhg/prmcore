@@ -13,7 +13,6 @@ import com.zte.crm.prm.anno.RemoteServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.processing.RoundEnvironment;
@@ -34,7 +33,6 @@ public class DelegateGenerator extends AbstractJavacHelper {
     public static final String CLASS_CFG = Configuration.class.getCanonicalName();
     public static final String CLASS_CSCAN = ComponentScan.class.getCanonicalName();
     public static final String CLASS_CONTRACT = RemoteServiceContract.class.getCanonicalName();
-    public static final String CLASS_RM = RequestMapping.class.getCanonicalName();
     public static final ConcurrentHashMap<String, Boolean> HISTORY = new ConcurrentHashMap<>();
 
     @Override
@@ -135,18 +133,6 @@ public class DelegateGenerator extends AbstractJavacHelper {
         ListBuffer<JCTree.JCAnnotation> annos = new ListBuffer<>();
         annos.append(restController);
 
-        RemoteServiceContract[] remoteServiceContracts = contract.tsym.getAnnotationsByType(RemoteServiceContract.class);
-        assert remoteServiceContracts.length == 1;
-        RemoteServiceContract rsc = remoteServiceContracts[0];
-        String basePath = rsc.path();
-        if(basePath!=null&&!basePath.trim().isEmpty()){
-            JCTree.JCAnnotation requestMapping =
-                    make.Annotation(javaTypeExpr(CLASS_RM),
-                            List.of(make.Literal(basePath)));
-            annos.append(requestMapping);
-        }
-
-
         contract
                 .asElement()
                 .getDeclarationAttributes()
@@ -170,9 +156,6 @@ public class DelegateGenerator extends AbstractJavacHelper {
         JCTree.JCAnnotation autowired = make.Annotation(
                 javaTypeExpr(CLASS_AUTOWIRED),
                 List.nil());
-
-
-
 
 
         JCTree.JCVariableDecl producerVar = varDecl(make.Modifiers(0L, List.of(autowired)),

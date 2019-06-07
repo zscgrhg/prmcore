@@ -52,23 +52,30 @@ public class ClientGenerator extends AbstractJavacHelper {
         RemoteServiceContract[] remoteServiceContracts = contractClazz.getAnnotationsByType(RemoteServiceContract.class);
         assert remoteServiceContracts.length == 1;
         RemoteServiceContract rsc = remoteServiceContracts[0];
-        String clientID=(rsc.name() +"/"+ rsc.context() +"/"+ rsc.path()).replaceAll("/+","/");
+
         JCTree.JCAssign nameAssign = make.Assign(make.Ident(javacNames.fromString("name")),
-                make.Literal(clientID));
+                make.Literal(rsc.name()));
 
         JCTree.JCAssign urlAssign = make.Assign(make.Ident(javacNames.fromString("url")),
                 make.Literal(rsc.url()));
 
         JCTree.JCAssign primaryAssign = make.Assign(make.Ident(javacNames.fromString("primary")),
                 make.Literal(true));
-        JCTree.JCExpression qualifier = make.Literal(rsc.qualifier());
 
+
+        JCTree.JCExpression qualifier = make.Literal( rsc.qualifier());
         JCTree.JCAssign qualifierAssign = make.Assign(make.Ident(javacNames.fromString("qualifier")),
                 qualifier);
+
+
+        JCTree.JCExpression contextId = make.Literal( "FeignClientSpecification#"+toDottedId(ctype).hashCode());
+        JCTree.JCAssign contextIdAssign = make.Assign(make.Ident(javacNames.fromString("contextId")),
+                contextId);
+
         final long genClassFlag = Flags.INTERFACE | Flags.PUBLIC;
         JCTree.JCAnnotation annotation =
                 make.Annotation(javaTypeExpr(CLASS_FC),
-                        List.of(nameAssign, primaryAssign, qualifierAssign, urlAssign));
+                        List.of(nameAssign, primaryAssign, qualifierAssign, urlAssign,contextIdAssign));
         ListBuffer<JCTree.JCAnnotation> annos = new ListBuffer<>();
         annos.append(annotation);
         JCTree.JCClassDecl generatedClass = make
