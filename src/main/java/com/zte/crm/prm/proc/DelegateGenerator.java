@@ -11,6 +11,7 @@ import com.zte.crm.prm.AbstractJavacHelper;
 import com.zte.crm.prm.anno.RemoteServiceContract;
 import com.zte.crm.prm.anno.RemoteServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,7 @@ public class DelegateGenerator extends AbstractJavacHelper {
     public static final String CLASS_CFG = Configuration.class.getCanonicalName();
     public static final String CLASS_CSCAN = ComponentScan.class.getCanonicalName();
     public static final String CLASS_CONTRACT = RemoteServiceContract.class.getCanonicalName();
+    public static final String CLASS_QUALIFIER = Qualifier.class.getCanonicalName();
     public static final ConcurrentHashMap<String, Boolean> HISTORY = new ConcurrentHashMap<>();
 
     @Override
@@ -105,7 +107,6 @@ public class DelegateGenerator extends AbstractJavacHelper {
         List<JCTree.JCAnnotation> annos = List.of(cfg, csan);
 
 
-
         JCTree.JCClassDecl attached = make
                 .ClassDef(make.Modifiers(genClassFlag, annos),
                         javacNames.fromString(simpleName),
@@ -156,9 +157,17 @@ public class DelegateGenerator extends AbstractJavacHelper {
         JCTree.JCAnnotation autowired = make.Annotation(
                 javaTypeExpr(CLASS_AUTOWIRED),
                 List.nil());
+        JCTree.JCExpression valueExpr =
+                make.Ident(javacNames.fromString(RemoteServiceProvider.class.getCanonicalName()
+                        + ".QUALIFIER"));
 
-        JCTree.JCVariableDecl producerVar = varDecl(make.Modifiers(0L, List.of(autowired)),
-                "producer", make.Type(contract), null);
+
+        JCTree.JCAnnotation qualifier = make.Annotation(
+                javaTypeExpr(CLASS_QUALIFIER),
+                List.of(valueExpr));
+
+        JCTree.JCVariableDecl producerVar = varDecl(make.Modifiers(0L, List.of(autowired,qualifier)),
+                "provider", make.Type(contract), null);
 
 
         generatedClass.defs = generatedClass.defs.prepend(producerVar);
@@ -185,7 +194,7 @@ public class DelegateGenerator extends AbstractJavacHelper {
                     stub.appendAttributes(symbol.getDeclarationAttributes());
                     ListBuffer<JCTree.JCExpression> argExpr = new ListBuffer<>();
                     stub.params.forEach(arg -> argExpr.append(make.Ident(arg.name)));
-                    JCTree.JCMethodInvocation invoke = invocation("this.producer." + stub.name, argExpr.toList());
+                    JCTree.JCMethodInvocation invoke = invocation("this.provider." + stub.name, argExpr.toList());
                     JCTree.JCMethodDecl copyed =
                             make.MethodDef(stub, block(make.Return(invoke)));
 
