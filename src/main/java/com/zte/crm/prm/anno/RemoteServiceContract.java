@@ -6,5 +6,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface RemoteServiceContract {
+    String CLIENT_STUB="RemoteServiceContractClientStub";
     String name();
+    String qualifier() default CLIENT_STUB;
 }

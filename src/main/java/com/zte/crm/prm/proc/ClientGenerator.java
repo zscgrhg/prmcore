@@ -51,14 +51,23 @@ public class ClientGenerator extends AbstractJavacHelper {
 
         RemoteServiceContract[] remoteServiceContracts = contractClazz.getAnnotationsByType(RemoteServiceContract.class);
         assert remoteServiceContracts.length == 1;
-        String name = remoteServiceContracts[0].name();
-        JCTree.JCAssign jcAssign = make.Assign(make.Ident(javacNames.fromString("name")),
-                make.Literal(name));
+        RemoteServiceContract rsc = remoteServiceContracts[0];
 
+        JCTree.JCAssign nameAssign = make.Assign(make.Ident(javacNames.fromString("name")),
+                make.Literal(rsc.name()));
+        JCTree.JCAssign primaryAssign = make.Assign(make.Ident(javacNames.fromString("primary")),
+                make.Literal(false));
+        JCTree.JCExpression qualifier=make.Literal(rsc.qualifier());
+        if(RemoteServiceContract.CLIENT_STUB.equals(rsc.qualifier())){
+            qualifier=make.Ident(javacNames.fromString(RemoteServiceContract.class.getCanonicalName()
+                    +".CLIENT_STUB"));
+        }
+        JCTree.JCAssign qualifierAssign = make.Assign(make.Ident(javacNames.fromString("qualifier")),
+                qualifier);
         final long genClassFlag = Flags.INTERFACE;
         JCTree.JCAnnotation annotation =
                 make.Annotation(javaTypeExpr(CLASS_FC),
-                        List.of(jcAssign));
+                        List.of(nameAssign, primaryAssign,qualifierAssign));
         ListBuffer<JCTree.JCAnnotation> annos = new ListBuffer<>();
         annos.append(annotation);
         JCTree.JCClassDecl generatedClass = make
