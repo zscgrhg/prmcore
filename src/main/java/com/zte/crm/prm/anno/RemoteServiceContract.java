@@ -9,6 +9,10 @@ public @interface RemoteServiceContract {
 
     String name();
 
+    String context() default "";
+
+    String path() default "";
+
     String url() default "";
 
     String qualifier() default "";
