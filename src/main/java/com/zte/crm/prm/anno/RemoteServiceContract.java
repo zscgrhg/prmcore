@@ -8,5 +8,6 @@ import java.lang.annotation.*;
 public @interface RemoteServiceContract {
     String CLIENT_STUB="RemoteServiceContractClientStub";
     String name();
+    String url() default "";
     String qualifier() default CLIENT_STUB;
 }

@@ -55,6 +55,10 @@ public class ClientGenerator extends AbstractJavacHelper {
 
         JCTree.JCAssign nameAssign = make.Assign(make.Ident(javacNames.fromString("name")),
                 make.Literal(rsc.name()));
+
+        JCTree.JCAssign urlAssign = make.Assign(make.Ident(javacNames.fromString("url")),
+                make.Literal(rsc.url()));
+
         JCTree.JCAssign primaryAssign = make.Assign(make.Ident(javacNames.fromString("primary")),
                 make.Literal(false));
         JCTree.JCExpression qualifier=make.Literal(rsc.qualifier());
@@ -64,10 +68,10 @@ public class ClientGenerator extends AbstractJavacHelper {
         }
         JCTree.JCAssign qualifierAssign = make.Assign(make.Ident(javacNames.fromString("qualifier")),
                 qualifier);
-        final long genClassFlag = Flags.INTERFACE;
+        final long genClassFlag = Flags.INTERFACE|Flags.PUBLIC;
         JCTree.JCAnnotation annotation =
                 make.Annotation(javaTypeExpr(CLASS_FC),
-                        List.of(nameAssign, primaryAssign,qualifierAssign));
+                        List.of(nameAssign, primaryAssign,qualifierAssign,urlAssign));
         ListBuffer<JCTree.JCAnnotation> annos = new ListBuffer<>();
         annos.append(annotation);
         JCTree.JCClassDecl generatedClass = make
