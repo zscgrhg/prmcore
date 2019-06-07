@@ -7,6 +7,7 @@ import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.util.List;
 import com.sun.tools.javac.util.ListBuffer;
 import com.zte.crm.prm.AbstractJavacHelper;
+import com.zte.crm.prm.RemoteServiceQualifier;
 import com.zte.crm.prm.anno.RemoteServiceContract;
 import org.springframework.cloud.openfeign.FeignClient;
 
@@ -62,8 +63,8 @@ public class ClientGenerator extends AbstractJavacHelper {
         JCTree.JCAssign primaryAssign = make.Assign(make.Ident(javacNames.fromString("primary")),
                 make.Literal(false));
         JCTree.JCExpression qualifier=make.Literal(rsc.qualifier());
-        if(RemoteServiceContract.CLIENT_STUB.equals(rsc.qualifier())){
-            qualifier=make.Ident(javacNames.fromString(RemoteServiceContract.class.getCanonicalName()
+        if(RemoteServiceQualifier.CLIENT_STUB.equals(rsc.qualifier())){
+            qualifier=make.Ident(javacNames.fromString(RemoteServiceQualifier.class.getCanonicalName()
                     +".CLIENT_STUB"));
         }
         JCTree.JCAssign qualifierAssign = make.Assign(make.Ident(javacNames.fromString("qualifier")),

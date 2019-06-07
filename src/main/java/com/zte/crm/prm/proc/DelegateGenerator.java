@@ -8,6 +8,7 @@ import com.sun.tools.javac.tree.TreeTranslator;
 import com.sun.tools.javac.util.List;
 import com.sun.tools.javac.util.ListBuffer;
 import com.zte.crm.prm.AbstractJavacHelper;
+import com.zte.crm.prm.RemoteServiceQualifier;
 import com.zte.crm.prm.anno.RemoteServiceContract;
 import com.zte.crm.prm.anno.RemoteServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -158,8 +159,8 @@ public class DelegateGenerator extends AbstractJavacHelper {
                 javaTypeExpr(CLASS_AUTOWIRED),
                 List.nil());
         JCTree.JCExpression valueExpr =
-                make.Ident(javacNames.fromString(RemoteServiceProvider.class.getCanonicalName()
-                        + ".QUALIFIER"));
+                make.Ident(javacNames.fromString(RemoteServiceQualifier.class.getCanonicalName()
+                        + ".PROVIDER"));
 
 
         JCTree.JCAnnotation qualifier = make.Annotation(
