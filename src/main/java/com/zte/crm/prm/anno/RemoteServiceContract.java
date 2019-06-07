@@ -8,6 +8,8 @@ import java.lang.annotation.*;
 public @interface RemoteServiceContract {
 
     String name();
+
     String url() default "";
+
     String qualifier() default "";
 }
