@@ -47,7 +47,7 @@ public class ClientGenerator extends AbstractJavacHelper {
 
     private void genClient(Symbol.ClassSymbol contractClazz, Type.ClassType ctype) {
         final String simpleName = "ClientOf" + ctype.tsym.name.toString();
-        final String genPkgName = ctype.tsym.name.toString() + ".codegen";
+        final String genPkgName = ctype.tsym.owner.toString() + ".codegen";
 
         RemoteServiceContract[] remoteServiceContracts = contractClazz.getAnnotationsByType(RemoteServiceContract.class);
         assert remoteServiceContracts.length == 1;
