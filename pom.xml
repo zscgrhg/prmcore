@@ -80,9 +80,17 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.7.0</version>
                 <configuration>
-                    <annotationProcessors>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.springframework.boot</groupId>
+                            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+                            <version>${spring.boot.version}</version>
+                        </path>
+                        <!-- ... more ... -->
+                    </annotationProcessorPaths>
+                    <!--<annotationProcessors>
                         org.springframework.boot.autoconfigureprocessor.AutoConfigureAnnotationProcessor
-                    </annotationProcessors>
+                    </annotationProcessors>-->
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>

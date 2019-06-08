@@ -23,3 +23,10 @@ http://hauchee.blogspot.com/2015/12/compile-time-annotation-processing-getting-c
 https://area-51.blog/2009/02/13/getting-class-values-from-annotations-in-an-annotationprocessor/
 
 https://codeday.me/bug/20171030/91258.html
+
+
+https://github.com/spring-cloud/spring-cloud-openfeign/issues/67
+
+
+
+https://juejin.im/post/5c49a9a86fb9a049ee80d10d

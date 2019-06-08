@@ -11,6 +11,7 @@ import com.zte.crm.prm.AbstractJavacHelper;
 import com.zte.crm.prm.anno.RemoteServiceContract;
 import com.zte.crm.prm.anno.RemoteServiceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,6 +34,7 @@ public class DelegateGenerator extends AbstractJavacHelper {
     public static final String CLASS_CFG = Configuration.class.getCanonicalName();
     public static final String CLASS_CSCAN = ComponentScan.class.getCanonicalName();
     public static final String CLASS_CONTRACT = RemoteServiceContract.class.getCanonicalName();
+    public static final String CLASS_FEIGN = FeignClient.class.getCanonicalName();
     public static final ConcurrentHashMap<String, Boolean> HISTORY = new ConcurrentHashMap<>();
 
     @Override
@@ -138,7 +140,8 @@ public class DelegateGenerator extends AbstractJavacHelper {
                 .getDeclarationAttributes()
                 .forEach(da -> {
                     if (!CLASS_RC.equals(da.type.toString())
-                            && !CLASS_CONTRACT.equals(da.type.toString())) {
+                            && !CLASS_CONTRACT.equals(da.type.toString())
+                            && !CLASS_FEIGN.equals(da.type.toString())) {
                         annos.append(make.Annotation(da));
                     }
 
