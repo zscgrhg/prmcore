@@ -39,6 +39,7 @@ public class DelegateGenerator extends AbstractJavacHelper {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+        System.out.println(this+"  round="+roundEnv.hashCode()+" // "+roundEnv);
         Set<? extends Element> annotated = roundEnv.getElementsAnnotatedWith(RemoteServiceProvider.class);
 
         annotated.forEach(element -> {

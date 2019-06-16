@@ -1,5 +1,6 @@
 com\zte\crm\prm\proc\MixinGenerator$2.class
 com\zte\crm\prm\proc\DelegateGenerator$1.class
+com\zte\crm\prm\proc\MixinGenerator$3.class
 META-INF\spring-autoconfigure-metadata.properties
 com\zte\crm\prm\AbstractJavacHelper.class
 com\zte\crm\prm\proc\DelegateGenerator.class
@@ -7,6 +8,7 @@ com\zte\crm\prm\anno\RemoteServiceProvider.class
 com\zte\crm\prm\WebConfig$1.class
 com\zte\crm\prm\anno\RemoteServiceContract.class
 com\zte\crm\prm\anno\Mixin.class
+com\zte\crm\prm\proc\AnyGenerator.class
 com\zte\crm\prm\proc\MixinGenerator$1.class
 com\zte\crm\prm\WebConfig.class
 com\zte\crm\prm\proc\MixinGenerator.class

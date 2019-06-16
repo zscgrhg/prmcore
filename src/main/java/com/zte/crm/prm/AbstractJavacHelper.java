@@ -1,22 +1,26 @@
 package com.zte.crm.prm;
 
 import com.sun.tools.javac.api.JavacTrees;
+import com.sun.tools.javac.code.Attribute;
 import com.sun.tools.javac.code.Symbol;
 import com.sun.tools.javac.code.Type;
 import com.sun.tools.javac.processing.JavacProcessingEnvironment;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.TreeMaker;
 import com.sun.tools.javac.util.*;
+import com.sun.tools.javac.util.List;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Messager;
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.lang.model.element.AnnotationMirror;
+import javax.lang.model.element.AnnotationValue;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.ExecutableElement;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.lang.annotation.Annotation;
-import java.util.Collection;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -213,6 +217,38 @@ public abstract class AbstractJavacHelper extends AbstractProcessor {
         return
                 make.Annotation(javaTypeExpr(anno),
                         args);
+    }
+
+
+    protected java.util.List<String> getAnnotationValues(Element element, Class<? extends Annotation> annotation){
+        java.util.List<? extends AnnotationMirror> mixList = element
+                .getAnnotationMirrors()
+                .stream()
+                .filter(t -> annotation
+                        .getCanonicalName()
+                        .equals(t.getAnnotationType().toString()))
+                .collect(Collectors.toList());
+        if(mixList.size()==0){
+            return Collections.emptyList();
+        }
+        java.util.List<String> ret=mixList.stream()
+                .flatMap(annotationMirror->{
+                    Map<? extends ExecutableElement, ? extends AnnotationValue> elementValues = annotationMirror.getElementValues();
+
+                    Attribute.Array value = (Attribute.Array)(elementValues
+                            .values()
+                            .stream()
+                            .findFirst()
+                            .get());
+                    return value
+                            .getValue()
+                            .stream()
+                            .map(t -> t
+                                    .getValue()
+                                    .toString());
+
+                }).collect(Collectors.toList());
+        return ret;
     }
 
     protected void addSource(String pkg, JCTree.JCClassDecl classDecl) {
