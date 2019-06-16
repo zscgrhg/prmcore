@@ -5,17 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/anno/Mixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/anno/Mixin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/DelegateGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/DelegateGenerator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/DelegateGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/DelegateGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/AbstractJavacHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/AbstractJavacHelper.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/prm-core-1.0-SNAPSHOT-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/prm-core-1.0-SNAPSHOT-sources.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/prm-core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/prm-core-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
+            <state relative-caret-position="332">
+              <caret line="132" column="67" selection-start-line="132" selection-start-column="67" selection-end-line="132" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -54,7 +48,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/lwk/Java/jdk1.8.0_211/lib/tools.jar!/com/sun/tools/javac/tree/TreeMaker.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
+            <state relative-caret-position="213">
               <caret line="591" column="24" selection-start-line="591" selection-start-column="24" selection-end-line="591" selection-end-column="24" />
             </state>
           </provider>
@@ -310,7 +304,7 @@
       <workItem from="1560083570053" duration="1064000" />
       <workItem from="1560430557276" duration="7272000" />
       <workItem from="1560519283697" duration="3728000" />
-      <workItem from="1560688747516" duration="8689000" />
+      <workItem from="1560688747516" duration="9813000" />
     </task>
     <task id="LOCAL-00001" summary="mixin">
       <created>1560435380837</created>
@@ -326,17 +320,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560698095704</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="mixin">
+      <created>1560698144205</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1560698144205</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22420000" />
+    <option name="totallyTimeSpent" value="23544000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.20241287" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.14410187" />
       <window_info id="Structure" order="1" sideWeight="0.78597784" side_tool="true" weight="0.2808311" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -344,7 +345,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.24645892" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.10764872" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24645892" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -363,7 +364,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.1689008" />
+      <window_info active="true" anchor="right" id="Maven" order="5" visible="true" weight="0.1689008" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout>
   </component>
@@ -546,15 +547,15 @@
     </entry>
     <entry file="jar://C:/lwk/Java/jdk1.8.0_211/lib/tools.jar!/com/sun/tools/javac/tree/TreeMaker.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
+        <state relative-caret-position="213">
           <caret line="591" column="24" selection-start-line="591" selection-start-column="24" selection-end-line="591" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
+        <state relative-caret-position="332">
+          <caret line="132" column="67" selection-start-line="132" selection-start-column="67" selection-end-line="132" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 public class MixinGenerator extends AbstractJavacHelper {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        System.out.println(this + "  round=" + roundEnv.hashCode() + " // " + roundEnv);
+
         Set<? extends Element> rootElements = roundEnv.getRootElements();
 
         Set<? extends Element> annotated = roundEnv.getElementsAnnotatedWith(Mixin.class);
@@ -41,6 +41,7 @@ public class MixinGenerator extends AbstractJavacHelper {
                 .stream()
                 .collect(Collectors.groupingBy(e -> e.toString(), Collectors.toList()));
         Map<String, Map<String, JCTree.JCExpression>> varDefsMap = new HashMap<>();
+        Map<String, Map<String, Boolean>> varDefsMapNoInit = new HashMap<>();
         rootElementMap
                 .entrySet()
                 .forEach(en -> {
@@ -49,7 +50,9 @@ public class MixinGenerator extends AbstractJavacHelper {
                             .getValue()
                             .forEach(env -> {
                                 varDefsMap.putIfAbsent(key, new HashMap<>());
+                                varDefsMapNoInit.putIfAbsent(key, new HashMap<>());
                                 Map<String, JCTree.JCExpression> defMap = varDefsMap.get(key);
+                                Map<String, Boolean> noinit=varDefsMapNoInit.get(key);
                                 JCTree tree = javacTrees.getTree(env);
                                 if (tree instanceof JCTree.JCClassDecl) {
                                     JCTree.JCClassDecl classDecl = (JCTree.JCClassDecl) tree;
@@ -58,7 +61,12 @@ public class MixinGenerator extends AbstractJavacHelper {
                                             @Override
                                             public void visitVarDef(JCTree.JCVariableDecl jcVariableDecl) {
                                                 super.visitVarDef(jcVariableDecl);
-                                                defMap.put(jcVariableDecl.name.toString(), jcVariableDecl.init);
+                                                if(jcVariableDecl.init==null){
+                                                    noinit.put(jcVariableDecl.name.toString(),true);
+                                                }else {
+                                                    defMap.put(jcVariableDecl.name.toString(), jcVariableDecl.init);
+                                                }
+
                                             }
                                         });
                                     });
@@ -83,7 +91,7 @@ public class MixinGenerator extends AbstractJavacHelper {
             for (String m : mixable) {
                 List<String> v = mixinMap.get(m);
                 for (String s : v) {
-                    mix(eleMap.get(s), eleMap.get(m), varDefsMap);
+                    mix(eleMap.get(s), eleMap.get(m), varDefsMap,varDefsMapNoInit);
                 }
                 mixinMap.remove(m);
                 c++;
@@ -96,7 +104,8 @@ public class MixinGenerator extends AbstractJavacHelper {
         return true;
     }
 
-    private void mix(Element from, Element to, Map<String, Map<String, JCTree.JCExpression>> varDefsMap) {
+    private void mix(Element from, Element to, Map<String, Map<String, JCTree.JCExpression>> varDefsMap,
+                     Map<String, Map<String, Boolean>> varDefsMapNoInit) {
         JCTree fromTree = javacTrees.getTree(from);
         JCTree toTree = javacTrees.getTree(to);
         if (fromTree instanceof JCTree.JCClassDecl &&
@@ -109,10 +118,19 @@ public class MixinGenerator extends AbstractJavacHelper {
                     public void visitVarDef(JCTree.JCVariableDecl jcVariableDecl) {
                         super.visitVarDef(jcVariableDecl);
                         //Symbol.VarSymbol clone = jcVariableDecl.sym.clone(mVar.owner);
+
+
                         Symbol.VarSymbol tmpl = jcVariableDecl.sym;
 
+                        if(varDefsMap
+                                .get(to.toString()).containsKey(tmpl.name.toString())||
+                                varDefsMapNoInit
+                                        .get(to.toString()).containsKey(tmpl.name.toString())){
+                            return;
+                        }
+
                         Symbol.VarSymbol clone = new Symbol.VarSymbol(tmpl.flags_field, tmpl.name,
-                                make.Type(tmpl.type).type, toClassDecl.sym);
+                                make.Type(tmpl.type.tsym.type).type, toClassDecl.sym);
                         clone.appendAttributes(jcVariableDecl.sym.getDeclarationAttributes());
                         JCTree.JCExpression initExpr = varDefsMap
                                 .get(from.toString())
