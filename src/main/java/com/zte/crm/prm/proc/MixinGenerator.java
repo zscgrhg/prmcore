@@ -1,8 +1,6 @@
 package com.zte.crm.prm.proc;
 
-import com.sun.tools.javac.code.Attribute;
 import com.sun.tools.javac.code.Symbol;
-import com.sun.tools.javac.code.Type;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.TreeTranslator;
 import com.zte.crm.prm.AbstractJavacHelper;
@@ -12,12 +10,13 @@ import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
-import javax.lang.model.element.*;
-import javax.lang.model.type.DeclaredType;
-import java.lang.annotation.Annotation;
-import java.util.*;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @SupportedAnnotationTypes("com.zte.crm.prm.anno.Mixin")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
@@ -34,8 +33,8 @@ public class MixinGenerator extends AbstractJavacHelper {
         }
         Map<String, List<String>> mixinMap = new HashMap<>();
         for (Element element : annotated) {
-           List<String> av=getAnnotationValues(element,Mixin.class);
-           mixinMap.put(element.toString(),av);
+            List<String> av = getAnnotationValues(element, Mixin.class);
+            mixinMap.put(element.toString(), av);
         }
 
         Map<String, ? extends List<? extends Element>> rootElementMap = rootElements
@@ -69,9 +68,8 @@ public class MixinGenerator extends AbstractJavacHelper {
                 });
 
 
-
-        while (!mixinMap.isEmpty()){
-            int c=0;
+        while (!mixinMap.isEmpty()) {
+            int c = 0;
             Set<String> kes = mixinMap.keySet();
             List<String> mixable = kes
                     .stream()
@@ -85,86 +83,23 @@ public class MixinGenerator extends AbstractJavacHelper {
             for (String m : mixable) {
                 List<String> v = mixinMap.get(m);
                 for (String s : v) {
-                    mix(eleMap.get(m),eleMap.get(s),varDefsMap);
+                    mix(eleMap.get(s), eleMap.get(m), varDefsMap);
                 }
                 mixinMap.remove(m);
                 c++;
             }
-            if(c==0){
+            if (c == 0) {
                 break;
             }
         }
 
-
-        if(true){
-            return true;
-        }
-        Set<? extends Element> mixinSource = roundEnv.getElementsAnnotatedWith(Mixin.class);
-
-        mixinSource.forEach(m -> {
-            if (m instanceof Symbol.VarSymbol) {
-                Symbol.VarSymbol mVar = (Symbol.VarSymbol) m;
-                String ownerKey = mVar.owner.toString();
-                JCTree.JCClassDecl ownerClassDecl = (JCTree.JCClassDecl) javacTrees
-                        .getTree(rootElementMap
-                                .get(ownerKey)
-                                .get(0));
-                if (mVar.type instanceof Type.ClassType) {
-                    Type.ClassType ctype = (Type.ClassType) mVar.type;
-                    System.out.println(ctype);
-
-                    String ctypeName = ctype.toString();
-                    List<? extends Element> elements = rootElementMap.get(ctypeName);
-                    Element element = elements.get(0);
-                    JCTree tree = javacTrees.getTree(element);
-                    if (tree instanceof JCTree.JCClassDecl) {
-                        JCTree.JCClassDecl classDecl = (JCTree.JCClassDecl) tree;
-                        classDecl.defs.forEach(d -> {
-                            d.accept(new TreeTranslator() {
-                                @Override
-                                public void visitVarDef(JCTree.JCVariableDecl jcVariableDecl) {
-                                    super.visitVarDef(jcVariableDecl);
-                                    //Symbol.VarSymbol clone = jcVariableDecl.sym.clone(mVar.owner);
-                                    Symbol.VarSymbol tmpl = jcVariableDecl.sym;
-                                    Symbol.VarSymbol clone = new Symbol.VarSymbol(tmpl.flags_field, javacNames.fromString(tmpl.name.toString() + "_mixed"),
-                                            tmpl.type, mVar.owner);
-                                    clone.appendAttributes(jcVariableDecl.sym.getDeclarationAttributes());
-                                    JCTree.JCExpression initExpr = varDefsMap
-                                            .get(ctypeName)
-                                            .get(clone.name.toString());
-                                    ownerClassDecl.defs = ownerClassDecl.defs.append(make.VarDef(clone, initExpr));
-
-                                }
-                            });
-                        });
-                        List<JCTree> removeMixin = ownerClassDecl.defs
-                                .stream()
-                                .filter(d -> {
-                                    if (d instanceof JCTree.JCVariableDecl) {
-                                        JCTree.JCVariableDecl decl = (JCTree.JCVariableDecl) d;
-                                        Mixin[] mixins = decl.sym.getAnnotationsByType(Mixin.class);
-                                        if (mixins == null || mixins.length == 0) {
-                                            return true;
-                                        } else {
-                                            return false;
-                                        }
-                                    }
-                                    return true;
-                                })
-                                .collect(Collectors.toList());
-
-                        // ownerClassDecl.defs=com.sun.tools.javac.util.List.from(removeMixin);
-                    }
-                }
-            }
-        });
         return true;
     }
 
-    private void mix(Element from,Element to,Map<String, Map<String, JCTree.JCExpression>> varDefsMap){
+    private void mix(Element from, Element to, Map<String, Map<String, JCTree.JCExpression>> varDefsMap) {
         JCTree fromTree = javacTrees.getTree(from);
         JCTree toTree = javacTrees.getTree(to);
-        if (fromTree instanceof JCTree.JCClassDecl&&
+        if (fromTree instanceof JCTree.JCClassDecl &&
                 toTree instanceof JCTree.JCClassDecl) {
             JCTree.JCClassDecl fromClassDecl = (JCTree.JCClassDecl) fromTree;
             JCTree.JCClassDecl toClassDecl = (JCTree.JCClassDecl) toTree;

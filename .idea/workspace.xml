@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3233a2d8-f685-45da-abdc-3ac0be7714d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/AnyGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/AbstractJavacHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/AbstractJavacHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/anno/Mixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/anno/Mixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/DelegateGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/DelegateGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/anno/Mixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/anno/Mixin.class" afterDir="false" />
@@ -48,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+            <state relative-caret-position="349">
+              <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -316,7 +310,7 @@
       <workItem from="1560083570053" duration="1064000" />
       <workItem from="1560430557276" duration="7272000" />
       <workItem from="1560519283697" duration="3728000" />
-      <workItem from="1560688747516" duration="8527000" />
+      <workItem from="1560688747516" duration="8689000" />
     </task>
     <task id="LOCAL-00001" summary="mixin">
       <created>1560435380837</created>
@@ -325,17 +319,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560435380837</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="mixin">
+      <created>1560698095703</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1560698095704</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22258000" />
+    <option name="totallyTimeSpent" value="22420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.20241287" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.20241287" />
       <window_info id="Structure" order="1" sideWeight="0.78597784" side_tool="true" weight="0.2808311" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -343,7 +344,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.24645892" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4022663" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.10764872" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -378,13 +379,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java</url>
-          <line>151</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java</url>
-          <line>27</line>
+          <line>26</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -558,8 +553,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+        <state relative-caret-position="349">
+          <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
