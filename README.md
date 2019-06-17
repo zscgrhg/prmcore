@@ -28,5 +28,17 @@ https://codeday.me/bug/20171030/91258.html
 https://github.com/spring-cloud/spring-cloud-openfeign/issues/67
 
 
+junit
+https://www.baeldung.com/spring-5-concurrent-tests
+https://junit.org/junit5/docs/current/user-guide
+https://www.ibm.com/developerworks/cn/java/j-junit5/index.html
+https://www.swtestacademy.com/junit5-parallel-test-execution/
+https://www.baeldung.com/lombok-custom-annotation
+
+https://junit.org/junit5/docs/current/user-guide/
+
+
+
+
 
 https://juejin.im/post/5c49a9a86fb9a049ee80d10d
