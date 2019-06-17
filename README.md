@@ -42,3 +42,18 @@ https://junit.org/junit5/docs/current/user-guide/
 
 
 https://juejin.im/post/5c49a9a86fb9a049ee80d10d
+
+https://blog.csdn.net/Melody_Susan/article/details/86215658
+
+https://www.baeldung.com/mockito-junit-5-extension
+
+https://www.ibm.com/developerworks/cn/java/j-junit5/index.html
+
+https://stackoverflow.com/questions/49096577/how-to-test-spring-5-controllers-with-junit5
+
+https://infinitescript.com/2018/02/getting-started-with-junit-5-test-your-spring-mvc-application-with-it/
+
+http://mvpjava.com/spring-boot-junit5/
+
+https://www.ibm.com/developerworks/cn/java/j-junit5/index.html
+
