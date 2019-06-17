@@ -129,26 +129,14 @@ public class MixinGenerator extends AbstractJavacHelper {
                         }
 
                         Symbol.VarSymbol clone = new Symbol.VarSymbol(tmpl.flags_field, tmpl.name,
-                                jcVariableDecl.vartype.type, toClassDecl.sym);
+                                tmpl.type, toClassDecl.sym);
                         clone.appendAttributes(jcVariableDecl.sym.getDeclarationAttributes());
                         JCTree.JCExpression initExpr = varDefsMap
                                 .get(from.toString())
                                 .get(clone.name.toString());
                         JCTree.JCImport jcImport = make.Import(javaTypeExpr(jcVariableDecl.vartype.type.toString()), false);
                         addImportInfo(to,jcImport);
-                        toClassDecl.accept(new TreeTranslator(){
-                            @Override
-                            public void visitTopLevel(JCTree.JCCompilationUnit jccu) {
-                                super.visitTopLevel(jccu);
-                                java.util.List<JCTree> trees = new ArrayList<>();
-                                trees.addAll(jccu.defs);
 
-                                if (!trees.contains(jcImport)) {
-                                    trees.add(0, jcImport);
-                                }
-                                jccu.defs = com.sun.tools.javac.util.List.from(trees);
-                            }
-                        });
                         toClassDecl.defs = toClassDecl.defs
                                 .append(make.VarDef(clone, initExpr));
 

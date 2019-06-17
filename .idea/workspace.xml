@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3233a2d8-f685-45da-abdc-3ac0be7714d9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/zte/crm/prm/proc/MixinGenerator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,17 +27,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="164" column="85" selection-start-line="164" selection-start-column="81" selection-end-line="164" selection-end-column="85" />
+            <state relative-caret-position="192">
+              <caret line="131" column="41" selection-start-line="131" selection-start-column="41" selection-end-line="131" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5132#7986#0" expanded="true" />
-                <element signature="e#7164#7811#0" expanded="true" />
-                <element signature="e#7810#7811#0" expanded="true" />
-                <element signature="e#7985#7986#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,12 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://C:/lwk/Java/jdk1.8.0_211/lib/tools.jar!/com/sun/tools/javac/util/List.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
+            <state relative-caret-position="4095">
               <caret line="231" column="19" selection-start-line="231" selection-start-column="19" selection-end-line="231" selection-end-column="19" />
-              <folding>
-                <element signature="e#5583#5584#0" expanded="true" />
-                <element signature="e#5632#5633#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -89,7 +75,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
@@ -157,8 +143,8 @@
         <option value="$PROJECT_DIR$/src/main/resources/META-INF/services/javax.annotation.processing.Processor" />
         <option value="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/anno/Mixin.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/AbstractJavacHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java" />
       </list>
     </option>
   </component>
@@ -197,6 +183,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -277,7 +264,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -316,7 +302,8 @@
       <workItem from="1560430557276" duration="7272000" />
       <workItem from="1560519283697" duration="3728000" />
       <workItem from="1560688747516" duration="10033000" />
-      <workItem from="1560776983837" duration="3008000" />
+      <workItem from="1560776983837" duration="3208000" />
+      <workItem from="1560780288523" duration="446000" />
     </task>
     <task id="LOCAL-00001" summary="mixin">
       <created>1560435380837</created>
@@ -346,17 +333,24 @@
       <option name="project" value="LOCAL" />
       <updated>1560699453013</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="mixin">
+      <created>1560780199098</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1560780199098</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26772000" />
+    <option name="totallyTimeSpent" value="27418000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.1461126" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.14812332" />
       <window_info id="Structure" order="1" sideWeight="0.78597784" side_tool="true" weight="0.2808311" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -383,7 +377,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.1689008" />
+      <window_info active="true" anchor="right" id="Maven" order="5" visible="true" weight="0.1689008" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout>
   </component>
@@ -500,6 +494,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/DelegateGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="10" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/lwk/Java/jdk1.8.0_211/lib/tools.jar!/com/sun/tools/javac/util/List.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4095">
+          <caret line="231" column="19" selection-start-line="231" selection-start-column="19" selection-end-line="231" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://C:/lwk/Java/jdk1.8.0_211/src.zip!/javax/lang/model/element/AnnotationValue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
@@ -518,6 +526,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" column="23" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -548,42 +563,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/lwk/Java/jdk1.8.0_211/lib/tools.jar!/com/sun/tools/javac/util/List.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="231" column="19" selection-start-line="231" selection-start-column="19" selection-end-line="231" selection-end-column="19" />
-          <folding>
-            <element signature="e#5583#5584#0" expanded="true" />
-            <element signature="e#5632#5633#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/DelegateGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="10" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/MixinGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="164" column="85" selection-start-line="164" selection-start-column="81" selection-end-line="164" selection-end-column="85" />
+        <state relative-caret-position="192">
+          <caret line="131" column="41" selection-start-line="131" selection-start-column="41" selection-end-line="131" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5132#7986#0" expanded="true" />
-            <element signature="e#7164#7811#0" expanded="true" />
-            <element signature="e#7810#7811#0" expanded="true" />
-            <element signature="e#7985#7986#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
         </state>
       </provider>
     </entry>
