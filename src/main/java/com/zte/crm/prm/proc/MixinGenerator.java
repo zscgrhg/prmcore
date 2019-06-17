@@ -1,5 +1,7 @@
 package com.zte.crm.prm.proc;
 
+import com.sun.source.tree.Tree;
+import com.sun.source.util.TreePath;
 import com.sun.tools.javac.code.Symbol;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.TreeTranslator;
@@ -12,10 +14,7 @@ import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @SupportedAnnotationTypes("com.zte.crm.prm.anno.Mixin")
@@ -130,12 +129,29 @@ public class MixinGenerator extends AbstractJavacHelper {
                         }
 
                         Symbol.VarSymbol clone = new Symbol.VarSymbol(tmpl.flags_field, tmpl.name,
-                                make.Type(tmpl.type.tsym.type).type, toClassDecl.sym);
+                                jcVariableDecl.vartype.type, toClassDecl.sym);
                         clone.appendAttributes(jcVariableDecl.sym.getDeclarationAttributes());
                         JCTree.JCExpression initExpr = varDefsMap
                                 .get(from.toString())
                                 .get(clone.name.toString());
-                        toClassDecl.defs = toClassDecl.defs.append(make.VarDef(clone, initExpr));
+                        JCTree.JCImport jcImport = make.Import(javaTypeExpr(jcVariableDecl.vartype.type.toString()), false);
+                        addImportInfo(to,jcImport);
+                        toClassDecl.accept(new TreeTranslator(){
+                            @Override
+                            public void visitTopLevel(JCTree.JCCompilationUnit jccu) {
+                                super.visitTopLevel(jccu);
+                                java.util.List<JCTree> trees = new ArrayList<>();
+                                trees.addAll(jccu.defs);
+
+                                if (!trees.contains(jcImport)) {
+                                    trees.add(0, jcImport);
+                                }
+                                jccu.defs = com.sun.tools.javac.util.List.from(trees);
+                            }
+                        });
+                        toClassDecl.defs = toClassDecl.defs
+                                .append(make.VarDef(clone, initExpr));
+
 
                     }
                 });
@@ -143,4 +159,20 @@ public class MixinGenerator extends AbstractJavacHelper {
         }
     }
 
+    private void addImportInfo(Element element,JCTree.JCImport newJcImport) {
+        TreePath treePath = javacTrees.getPath(element);
+        Tree leaf = treePath.getLeaf();
+        if (treePath.getCompilationUnit() instanceof JCTree.JCCompilationUnit && leaf instanceof JCTree) {
+            JCTree.JCCompilationUnit jccu = (JCTree.JCCompilationUnit) treePath.getCompilationUnit();
+
+
+            java.util.List<JCTree> trees = new ArrayList<>();
+            trees.addAll(jccu.defs);
+
+            if (!trees.contains(newJcImport)) {
+                trees.add(0, newJcImport);
+            }
+            jccu.defs = com.sun.tools.javac.util.List.from(trees);
+        }
+    }
 }
