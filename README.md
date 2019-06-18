@@ -57,3 +57,11 @@ http://mvpjava.com/spring-boot-junit5/
 
 https://www.ibm.com/developerworks/cn/java/j-junit5/index.html
 
+http://www.bytestree.com/spring/spring-boot-2-junit-5-rest-api-unit-testing/
+
+https://dzone.com/articles/spring-boot-2-with-junit-5-and-mockito-2-for-unit
+
+https://spring.io/guides/gs/testing-web/
+
+
+
