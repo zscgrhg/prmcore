@@ -1,9 +1,15 @@
 com\zte\crm\prm\proc\MixinGenerator$2.class
 com\zte\crm\prm\proc\DelegateGenerator$1.class
+com\zte\crm\prm\model\Job.class
+com\zte\crm\prm\proc\TableDefsGenerator$2.class
+com\zte\crm\prm\proc\TableDefsGenerator.class
 META-INF\spring-autoconfigure-metadata.properties
 com\zte\crm\prm\AbstractJavacHelper.class
+com\zte\crm\prm\anno\TableDefs.class
 com\zte\crm\prm\proc\DelegateGenerator.class
 com\zte\crm\prm\anno\RemoteServiceProvider.class
+com\zte\crm\prm\proc\TableDefsGenerator$1.class
+com\zte\crm\prm\proc\MixinClassVisitor.class
 com\zte\crm\prm\WebConfig$1.class
 com\zte\crm\prm\anno\RemoteServiceContract.class
 com\zte\crm\prm\anno\Mixin.class

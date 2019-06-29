@@ -1,2 +1,3 @@
 com.zte.crm.prm.proc.DelegateGenerator
 com.zte.crm.prm.proc.MixinGenerator
+com.zte.crm.prm.proc.TableDefsGenerator

@@ -4,6 +4,7 @@ import com.sun.tools.javac.api.JavacTrees;
 import com.sun.tools.javac.code.Attribute;
 import com.sun.tools.javac.code.Symbol;
 import com.sun.tools.javac.code.Type;
+import com.sun.tools.javac.code.TypeTag;
 import com.sun.tools.javac.processing.JavacProcessingEnvironment;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.TreeMaker;
@@ -30,7 +31,7 @@ public abstract class AbstractJavacHelper extends AbstractProcessor {
     protected JavacTrees javacTrees;
     protected TreeMaker make;
     protected Names javacNames;
-
+    protected ProcessingEnvironment processingEnv;
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
@@ -39,6 +40,8 @@ public abstract class AbstractJavacHelper extends AbstractProcessor {
         Context context = ((JavacProcessingEnvironment) processingEnv).getContext();
         this.make = TreeMaker.instance(context);
         this.javacNames = Names.instance(context);
+        this.processingEnv=processingEnv;
+
     }
 
     protected JCTree.JCExpression dottedId(String dotted, int pos) {
@@ -125,6 +128,20 @@ public abstract class AbstractJavacHelper extends AbstractProcessor {
         return invocation(dottedId(methodRef, -1), args);
     }
 
+
+    protected JCTree.JCThrow throwByName(String name, String msg) {
+        JCTree.JCExpression exception = make.NewClass(null, List.<JCTree.JCExpression>nil(),
+                javaTypeExpr(name),
+                List.<JCTree.JCExpression>of(make.Literal(TypeTag.CLASS, msg)), null);
+        return make.Throw(exception);
+    }
+
+    protected JCTree.JCThrow throwByName(String name) {
+        JCTree.JCExpression exception = make.NewClass(null, List.<JCTree.JCExpression>nil(),
+                javaTypeExpr(name),
+                List.<JCTree.JCExpression>nil(), null);
+        return make.Throw(exception);
+    }
 
     protected JCTree.JCMethodInvocation invocation(String methodRef) {
         return invocation(methodRef, List.nil());
@@ -220,7 +237,7 @@ public abstract class AbstractJavacHelper extends AbstractProcessor {
     }
 
 
-    protected java.util.List<String> getAnnotationValues(Element element, Class<? extends Annotation> annotation){
+    protected java.util.List<Type.ClassType> getAnnotationValues(Element element, Class<? extends Annotation> annotation){
         java.util.List<? extends AnnotationMirror> mixList = element
                 .getAnnotationMirrors()
                 .stream()
@@ -231,7 +248,7 @@ public abstract class AbstractJavacHelper extends AbstractProcessor {
         if(mixList.size()==0){
             return Collections.emptyList();
         }
-        java.util.List<String> ret=mixList.stream()
+        java.util.List<Type.ClassType> ret=mixList.stream()
                 .flatMap(annotationMirror->{
                     Map<? extends ExecutableElement, ? extends AnnotationValue> elementValues = annotationMirror.getElementValues();
 
@@ -243,9 +260,12 @@ public abstract class AbstractJavacHelper extends AbstractProcessor {
                     return value
                             .getValue()
                             .stream()
-                            .map(t -> t
-                                    .getValue()
-                                    .toString());
+                            .map(t -> {
+                                Type.ClassType ctype=
+                                        (Type.ClassType)t
+                                        .getValue();
+                                return ctype;
+                            });
 
                 }).collect(Collectors.toList());
         return ret;

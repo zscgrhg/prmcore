@@ -3,6 +3,7 @@ package com.zte.crm.prm.proc;
 import com.sun.source.tree.Tree;
 import com.sun.source.util.TreePath;
 import com.sun.tools.javac.code.Symbol;
+import com.sun.tools.javac.code.Type;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.TreeTranslator;
 import com.zte.crm.prm.AbstractJavacHelper;
@@ -30,9 +31,9 @@ public class MixinGenerator extends AbstractJavacHelper {
         for (Element element : rootElements) {
             eleMap.put(element.toString(), element);
         }
-        Map<String, List<String>> mixinMap = new HashMap<>();
+        Map<String, List<Type.ClassType>> mixinMap = new HashMap<>();
         for (Element element : annotated) {
-            List<String> av = getAnnotationValues(element, Mixin.class);
+            List<Type.ClassType> av = getAnnotationValues(element, Mixin.class);
             mixinMap.put(element.toString(), av);
         }
 
@@ -81,16 +82,21 @@ public class MixinGenerator extends AbstractJavacHelper {
             List<String> mixable = kes
                     .stream()
                     .filter(s -> {
-                        List<String> vs = mixinMap.get(s);
+                        List<Type.ClassType> vs = mixinMap.get(s);
                         return vs
                                 .stream()
                                 .allMatch(v -> !kes.contains(v));
                     })
                     .collect(Collectors.toList());
             for (String m : mixable) {
-                List<String> v = mixinMap.get(m);
-                for (String s : v) {
-                    mix(eleMap.get(s), eleMap.get(m), varDefsMap,varDefsMapNoInit);
+                List<Type.ClassType> v = mixinMap.get(m);
+                for (Type.ClassType s : v) {
+                    if(eleMap.containsKey(s.toString())){
+                        mix(eleMap.get(s.toString()), eleMap.get(m), varDefsMap,varDefsMapNoInit);
+                    }else {
+                        mix(s, eleMap.get(m), varDefsMap,varDefsMapNoInit);
+                    }
+
                 }
                 mixinMap.remove(m);
                 c++;
@@ -101,6 +107,11 @@ public class MixinGenerator extends AbstractJavacHelper {
         }
 
         return true;
+    }
+
+    private void mix(Type.ClassType from, Element to, Map<String, Map<String, JCTree.JCExpression>> varDefsMap,
+                     Map<String, Map<String, Boolean>> varDefsMapNoInit) {
+        System.out.println(from);
     }
 
     private void mix(Element from, Element to, Map<String, Map<String, JCTree.JCExpression>> varDefsMap,
