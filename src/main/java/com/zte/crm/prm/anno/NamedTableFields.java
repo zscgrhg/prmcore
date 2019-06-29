@@ -5,5 +5,5 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface TableDefs {
+public @interface NamedTableFields {
 }
