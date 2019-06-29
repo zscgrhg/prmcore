@@ -47,7 +47,7 @@ public class TableDefsGenerator extends AbstractJavacHelper {
                     public void visitClassDef(JCTree.JCClassDecl jcClassDecl) {
                         super.visitClassDef(jcClassDecl);
                         final String simpleName = "Column";
-                        final long genClassFlag = Flags.PUBLIC | Flags.STATIC;
+                        final long genClassFlag = Flags.PUBLIC | Flags.STATIC|Flags.FINAL;
                         JCTree.JCClassDecl columnsClassDecl = make
                                 .ClassDef(make.Modifiers(genClassFlag, com.sun.tools.javac.util.List.nil()),
                                         javacNames.fromString(simpleName),
@@ -63,9 +63,10 @@ public class TableDefsGenerator extends AbstractJavacHelper {
 //                            column.sym.getAnnotationMirrors().get(0).
 //                                    member(javacNames.fromString("value")).getValue()
 
-                            Optional<Attribute.Compound> compound = Optional.ofNullable(column.sym
-                                    .getAnnotationMirrors()
-                                    .get(0));
+
+
+                            Optional<Attribute.Compound> compound = column.sym
+                                    .getAnnotationMirrors().stream().findFirst();
                             String name = compound
                                     .map(ac -> ac.member(javacNames.fromString("value")))
                                     .map(acc -> String.valueOf(acc.getValue())).orElse(column.name.toString());
@@ -82,10 +83,10 @@ public class TableDefsGenerator extends AbstractJavacHelper {
                                 continue;
                             }
 
-
+                            String CNAME=toConstStyle(name);
 
                             JCTree.JCVariableDecl colDecl = varDecl(make.Modifiers(publicStaticFinale, com.sun.tools.javac.util.List.nil()),
-                                    column.name.toString(), javaTypeExpr("java.lang.String"), make.Literal(name));
+                                    CNAME, javaTypeExpr("java.lang.String"), make.Literal(CNAME));
                             columnsClassDecl.defs=columnsClassDecl.defs.prepend(colDecl);
                         }
 
@@ -111,5 +112,11 @@ public class TableDefsGenerator extends AbstractJavacHelper {
             }
         });
         return true;
+    }
+
+    private String toConstStyle(String name){
+        return name
+                .replaceAll("([a-z])([A-Z])", "$1_$2")
+                .toUpperCase();
     }
 }
