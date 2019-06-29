@@ -46,8 +46,8 @@ public class TableDefsGenerator extends AbstractJavacHelper {
                     @Override
                     public void visitClassDef(JCTree.JCClassDecl jcClassDecl) {
                         super.visitClassDef(jcClassDecl);
-                        final String simpleName = "Column";
-                        final long genClassFlag = Flags.PUBLIC | Flags.STATIC|Flags.FINAL;
+                        final String simpleName = jcClassDecl.name.toString()+"ColumnDefs";
+                        final long genClassFlag = Flags.PUBLIC |Flags.FINAL;
                         JCTree.JCClassDecl columnsClassDecl = make
                                 .ClassDef(make.Modifiers(genClassFlag, com.sun.tools.javac.util.List.nil()),
                                         javacNames.fromString(simpleName),
@@ -106,7 +106,8 @@ public class TableDefsGenerator extends AbstractJavacHelper {
 
                         columnsClassDecl.defs=columnsClassDecl.defs.prepend(empty);
 
-                        jcClassDecl.defs = jcClassDecl.defs.prepend(columnsClassDecl);
+                        addSource(jcClassDecl.sym.owner.toString(), columnsClassDecl);
+                        //jcClassDecl.defs = jcClassDecl.defs.prepend(columnsClassDecl);
                     }
                 });
             }
