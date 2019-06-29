@@ -9,6 +9,7 @@ import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.TreeTranslator;
 import com.zte.crm.prm.AbstractJavacHelper;
 import com.zte.crm.prm.anno.TableDefs;
+import lombok.experimental.UtilityClass;
 
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
@@ -48,8 +49,11 @@ public class TableDefsGenerator extends AbstractJavacHelper {
                         super.visitClassDef(jcClassDecl);
                         final String simpleName = jcClassDecl.name.toString()+"ColumnDefs";
                         final long genClassFlag = Flags.PUBLIC |Flags.FINAL;
+                        com.sun.tools.javac.util.List<JCTree.JCAnnotation> annos //
+                                = com.sun.tools.javac.util.List.of(make.Annotation(javaTypeExpr(UtilityClass.class.getCanonicalName()),
+                                com.sun.tools.javac.util.List.nil()));
                         JCTree.JCClassDecl columnsClassDecl = make
-                                .ClassDef(make.Modifiers(genClassFlag, com.sun.tools.javac.util.List.nil()),
+                                .ClassDef(make.Modifiers(genClassFlag, annos),
                                         javacNames.fromString(simpleName),
                                         com.sun.tools.javac.util.List.nil(),
                                         null,
@@ -104,7 +108,7 @@ public class TableDefsGenerator extends AbstractJavacHelper {
                         JCTree.JCMethodDecl empty =
                                 make.MethodDef(init, block(throwByName(RuntimeException.class.getCanonicalName())));
 
-                        columnsClassDecl.defs=columnsClassDecl.defs.prepend(empty);
+                        //columnsClassDecl.defs=columnsClassDecl.defs.prepend(empty);
 
                         addSource(jcClassDecl.sym.owner.toString(), columnsClassDecl);
                         //jcClassDecl.defs = jcClassDecl.defs.prepend(columnsClassDecl);

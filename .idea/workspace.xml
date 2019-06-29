@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3233a2d8-f685-45da-abdc-3ac0be7714d9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/TableDefsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/TableDefsGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/spring-autoconfigure-metadata.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -22,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/DelegateGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1804">
-              <caret line="200" column="46" selection-start-line="200" selection-start-column="7" selection-end-line="200" selection-end-column="46" />
+            <state relative-caret-position="103">
+              <caret line="134" column="34" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,10 +64,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/TableDefsGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="49" column="63" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+            <state relative-caret-position="238">
+              <caret line="53" column="70" selection-start-line="53" selection-start-column="70" selection-end-line="53" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1905#5193#0" expanded="true" />
+                <element signature="e#5192#5193#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -421,7 +423,7 @@
       <workItem from="1561198917444" duration="180000" />
       <workItem from="1561792362442" duration="9502000" />
       <workItem from="1561802983983" duration="859000" />
-      <workItem from="1561803905339" duration="532000" />
+      <workItem from="1561803905339" duration="1085000" />
     </task>
     <task id="LOCAL-00001" summary="mixin">
       <created>1560435380837</created>
@@ -500,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1561803590148</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="mixin">
+      <created>1561804572005</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1561804572005</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -521,13 +530,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49943000" />
+    <option name="totallyTimeSpent" value="50496000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.17493297" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.21402214" visible="true" weight="0.17493297" />
       <window_info id="Structure" order="1" sideWeight="0.78597784" side_tool="true" weight="0.2808311" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -535,7 +544,7 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30878186" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35410765" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.17847025" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -554,7 +563,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.21581769" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.21581769" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
     </layout>
   </component>
@@ -582,7 +591,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/TableDefsGenerator.java</url>
-          <line>114</line>
+          <line>118</line>
           <properties />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
@@ -873,8 +882,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/DelegateGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1804">
-          <caret line="200" column="46" selection-start-line="200" selection-start-column="7" selection-end-line="200" selection-end-column="46" />
+        <state relative-caret-position="103">
+          <caret line="134" column="34" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -883,10 +892,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/zte/crm/prm/proc/TableDefsGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="49" column="63" selection-start-line="49" selection-start-column="63" selection-end-line="49" selection-end-column="63" />
+        <state relative-caret-position="238">
+          <caret line="53" column="70" selection-start-line="53" selection-start-column="70" selection-end-line="53" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1905#5193#0" expanded="true" />
+            <element signature="e#5192#5193#0" expanded="true" />
           </folding>
         </state>
       </provider>
